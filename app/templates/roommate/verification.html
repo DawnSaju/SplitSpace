@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- tailwindcss cdn -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.0.3/dist/tailwind.min.css" rel="stylesheet">
+    <title>Verification</title>
+</head>
+<body>
+    <div class="min-h-screen bg-gradient-to-br from-blue-50 to-green-100 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
+        <div class="sm:mx-auto sm:w-full sm:max-w-md">
+          <h2 class="mt-6 text-center text-4xl font-extrabold text-gray-900">
+            Enter Verification Code
+          </h2>
+          <p class="mt-2 text-center text-sm text-gray-600">
+            We've sent a verification code to your email
+          </p>
+        </div>
+  
+        <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
+          <div class="bg-white py-8 px-4 shadow-lg sm:rounded-xl sm:px-10 border border-gray-100">
+            <form id="verificationForm" class="space-y-6" method="POST" action="/roommate/verification">
+              <div>
+                <label htmlFor="otp_code" class="block text-sm font-medium text-gray-700">
+                  Verification Code
+                </label>
+                <div class="mt-1 relative rounded-md shadow-sm">
+                  <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <svg class="h-5 w-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm0-14a6 6 0 100 12A6 6 0 0010 4zm1 7H9v2a1 1 0 11-2 0V8a1 1 0 012 0v3h2a1 1 0 110 2z" clipRule="evenodd" />
+                    </svg>
+                  </div>
+                  <input
+                    id="otp_code"
+                    name="otp_code"
+                    type="text"
+                    required
+                    class="appearance-none block w-full px-3 py-2 pl-10 border border-gray-300 rounded-lg shadow-sm placeholder-gray-400 focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
+                    placeholder="Enter your code"
+                  />
+                </div>
+              </div>
+  
+              <div>
+                <button
+                  type="submit"
+                  class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-gradient-to-r from-green-500 to-blue-600 hover:from-green-600 hover:to-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-all duration-150 ease-in-out"
+                >
+                  Verify
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+</body>
+</html>
