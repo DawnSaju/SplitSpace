@@ -10,7 +10,6 @@ from urllib.parse import urljoin
 import pyotp
 import os
 import mailtrap as mt
-import openai
 import requests
 import random
 import pyrebase
