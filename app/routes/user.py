@@ -78,8 +78,8 @@ def roommate_login():
                 #                         <div>
                 #                             <h1 style="font-size:24px;font-weight:normal;margin:30px 0px;padding:0px">
                 #                             <b>
-                #                                 <font color="#000000">Sustain</font>
-                #                                 <font color="#6aa84f">AI</font>
+                #                                 <font color="#000000">Split</font>
+                #                                 <font color="#6aa84f">Space</font>
                 #                             </b>
                 #                             </h1>
                 #                         </div>
@@ -91,7 +91,7 @@ def roommate_login():
                 #                     </tbody>
                 #                 </table>
                 #                 <p style="font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Oxygen,Ubuntu,Cantarell,&quot;Fira Sans&quot;,&quot;Droid Sans&quot;,&quot;Helvetica Neue&quot;,sans-serif;color:rgb(0,0,0);font-size:14px;line-height:24px">
-                #                     <span style="color:rgb(34,34,34);font-family:Arial,Helvetica,sans-serif;font-size:small">You are receiving this email because you registered for SustainAI.</span>
+                #                     <span style="color:rgb(34,34,34);font-family:Arial,Helvetica,sans-serif;font-size:small">You are receiving this email because you registered for SplitSpace.</span>
                 #                     <br style="color:rgb(34,34,34);font-family:Arial,Helvetica,sans-serif;font-size:small">
                 #                 </p>
                 #                 <p style="font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Oxygen,Ubuntu,Cantarell,&quot;Fira Sans&quot;,&quot;Droid Sans&quot;,&quot;Helvetica Neue&quot;,sans-serif;color:rgb(0,0,0);font-size:14px;line-height:24px">
@@ -127,11 +127,6 @@ def roommate_login():
                 #                     </tbody>
                 #                 </table>
                 #                 <br>
-                #                 <p style="font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Oxygen,Ubuntu,Cantarell,&quot;Fira Sans&quot;,&quot;Droid Sans&quot;,&quot;Helvetica Neue&quot;,sans-serif;text-align:center;color:rgb(0,0,0);line-height:24px">
-                #                     <font size="4">"</font>
-                #                     <span style="font-size:14px">Make the earth a better place to live by disposing waste the right way</span>
-                #                     <font size="4">"</font>
-                #                 </p>
                 #                 <p style="font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Oxygen,Ubuntu,Cantarell,&quot;Fira Sans&quot;,&quot;Droid Sans&quot;,&quot;Helvetica Neue&quot;,sans-serif;text-align:center;color:rgb(0,0,0);line-height:24px">
                 #                     <font size="4">Team EcoWarriors</font>
                 #                 </p>
@@ -211,12 +206,13 @@ def roommate_verification():
             Roommate_id = session.get('Roommate_id')
             roommate = Roommate.query.get(Roommate_id)
             session['user_role'] = 'roommate'
+            session['Roommate_Name'] = roommate.RoommateName
             login_user(roommate)
             session.pop('otp_code', None)
 
             print('OTP verification successful')
 
-            return render_template('roommate/dashboard.html')
+            return redirect(url_for('roommate_dashboard'))
 
         else:
             flash('Invalid OTP code', 'danger')
@@ -227,6 +223,6 @@ def roommate_verification():
 @app.route('/roommate/dashboard', methods=['GET'])
 def roommate_dashboard():
     if session["user_role"] == "roommate":
-        return render_template('roommate/dashboard.html')
+        return render_template('roommate/dashboard.html', name=session['Roommate_Name'])
     else:
         return redirect(url_for('roommate_login'))
