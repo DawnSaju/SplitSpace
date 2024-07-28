@@ -7,8 +7,8 @@ import requests
 import os
 
 app = Flask(__name__, static_url_path='/static')
-# app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DATABASE_URL")
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///../database.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DATABASE_URL")
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///../database.db'
 # postgres://sustainai_user:ZkQFwvwmYHTYd6lAatYA5TJle4Bx16BD@dpg-ckrqd5prfc9c738oau80-a.oregon-postgres.render.com/sustainai
 app.config['SECRET_KEY'] = "TEST1233444222"
 
