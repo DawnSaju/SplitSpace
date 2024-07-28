@@ -18,7 +18,6 @@ import collections
 import json
 import numpy as np
 from urllib.request import urlopen
-import cv2 as cv
 from math import pow
 
 @app.route('/', methods=['GET'])
