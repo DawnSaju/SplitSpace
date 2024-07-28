@@ -18,11 +18,8 @@ passlib==1.7.4
 SQLAlchemy==2.0.20
 typing-extensions==4.7.1
 mailtrap
-werkzeug
 zipp
 pyotp
 pyrebase4
 requests
-tensorflow
 numpy
-opencv-python
